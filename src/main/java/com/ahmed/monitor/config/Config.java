@@ -7,21 +7,21 @@ public class Config {
     public static final Dotenv dotenv = Dotenv.load();
 
     public static final String BOT_TOKEN =
-            dotenv.get("BOT_TOKEN");
+            System.getenv("BOT_TOKEN");
 
     public static final String CHAT_ID =
-            dotenv.get("CHAT_ID");
+            System.getenv("CHAT_ID");
 
     public static final String BOOKING_URL =
-            dotenv.get("BOOKING_URL");
+            System.getenv("BOOKING_URL");
 
     public static final String CHAT_ID_2 =
-            dotenv.get("CHAT_ID_2");
+            System.getenv("CHAT_ID_2");
 
     public static final int CHECK_INTERVAL =
-            Integer.parseInt(dotenv.get("CHECK_INTERVAL"));
+            Integer.parseInt(System.getenv("CHECK_INTERVAL"));
 
     public static final boolean HEADLESS =
-            Boolean.parseBoolean(dotenv.get("HEADLESS"));
+            Boolean.parseBoolean(System.getenv("HEADLESS"));
 
 }
