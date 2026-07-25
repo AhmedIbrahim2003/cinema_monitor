@@ -1,10 +1,7 @@
 package com.ahmed.monitor.config;
 
-import io.github.cdimascio.dotenv.Dotenv;
 
 public class Config {
-
-    public static final Dotenv dotenv = Dotenv.load();
 
     public static final String BOT_TOKEN =
             System.getenv("BOT_TOKEN");
