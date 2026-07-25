@@ -37,3 +37,19 @@ jobs:
           CHAT_ID_2: ${{ secrets.CHAT_ID_2 }}
           BOOKING_URL: ${{ secrets.BOOKING_URL }}
         run: mvn exec:java -Dexec.mainClass=com.ahmed.monitor.Main
+      - name: Verify secrets
+        env:
+          BOOKING_URL: ${{ secrets.BOOKING_URL }}
+          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+        run: |
+          if [ -z "$BOOKING_URL" ]; then
+            echo "BOOKING_URL is EMPTY"
+          else
+            echo "BOOKING_URL is SET (length=${#BOOKING_URL})"
+          fi
+
+          if [ -z "$BOT_TOKEN" ]; then
+            echo "BOT_TOKEN is EMPTY"
+          else
+            echo "BOT_TOKEN is SET"
+          fi
