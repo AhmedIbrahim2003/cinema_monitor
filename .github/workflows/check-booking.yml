@@ -29,14 +29,7 @@ jobs:
 
       - name: Build project
         run: mvn clean compile
-
-      - name: Run monitor
-        env:
-          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
-          CHAT_ID: ${{ secrets.CHAT_ID }}
-          CHAT_ID_2: ${{ secrets.CHAT_ID_2 }}
-          BOOKING_URL: ${{ secrets.BOOKING_URL }}
-        run: mvn exec:java -Dexec.mainClass=com.ahmed.monitor.Main
+        
       - name: Verify secrets
         env:
           BOOKING_URL: ${{ secrets.BOOKING_URL }}
@@ -53,3 +46,11 @@ jobs:
           else
             echo "BOT_TOKEN is SET"
           fi
+      - name: Run monitor
+        env:
+          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+          CHAT_ID: ${{ secrets.CHAT_ID }}
+          CHAT_ID_2: ${{ secrets.CHAT_ID_2 }}
+          BOOKING_URL: ${{ secrets.BOOKING_URL }}
+        run: mvn exec:java -Dexec.mainClass=com.ahmed.monitor.Main
+      
