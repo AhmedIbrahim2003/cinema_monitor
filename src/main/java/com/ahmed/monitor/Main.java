@@ -25,6 +25,11 @@ public class Main {
                 );
 
                 Page page = browser.newPage();
+                System.out.println("BOOKING_URL = " + Config.BOOKING_URL);
+
+                if (Config.BOOKING_URL == null || Config.BOOKING_URL.isBlank()) {
+                    throw new RuntimeException("BOOKING_URL is null or blank");
+                }
 
                 page.navigate(String.valueOf(Config.BOOKING_URL));
 
