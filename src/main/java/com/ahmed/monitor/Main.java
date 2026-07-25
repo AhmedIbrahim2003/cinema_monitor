@@ -2,7 +2,6 @@ package com.ahmed.monitor;
 
 import com.ahmed.monitor.checker.CinemaChecker;
 import com.ahmed.monitor.config.Config;
-import com.ahmed.monitor.scheduler.Scheduler;
 import com.ahmed.monitor.telegram.TelegramNotifier;
 import com.microsoft.playwright.Browser;
 import com.microsoft.playwright.BrowserType;
@@ -16,10 +15,6 @@ import java.time.LocalDateTime;
 public class Main {
 
     public static void main(String[] args) {
-
-        Scheduler scheduler = new Scheduler();
-
-        scheduler.start(() -> {
 
             System.out.println("Checking... " + LocalDateTime.now());
             try (Playwright playwright = Playwright.create()) {
@@ -75,7 +70,6 @@ public class Main {
 
                 browser.close();
             }
-        });
 
     }
 

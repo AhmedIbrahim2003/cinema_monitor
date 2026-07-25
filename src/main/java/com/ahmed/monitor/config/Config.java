@@ -14,11 +14,4 @@ public class Config {
 
     public static final String CHAT_ID_2 =
             System.getenv("CHAT_ID_2");
-
-    public static final int CHECK_INTERVAL =
-            Integer.parseInt(System.getenv("CHECK_INTERVAL"));
-
-    public static final boolean HEADLESS =
-            Boolean.parseBoolean(System.getenv("HEADLESS"));
-
 }
