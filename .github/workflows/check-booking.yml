@@ -34,5 +34,6 @@ jobs:
         env:
           BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
           CHAT_ID: ${{ secrets.CHAT_ID }}
+          CHAT_ID_2: ${{ secrets.CHAT_ID_2 }}
           BOOKING_URL: ${{ secrets.BOOKING_URL }}
         run: mvn exec:java -Dexec.mainClass=com.ahmed.monitor.Main
