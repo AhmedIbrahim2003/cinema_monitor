@@ -11,7 +11,4 @@ public class Config {
 
     public static final String BOOKING_URL =
             System.getenv("BOOKING_URL");
-
-    public static final String CHAT_ID_2 =
-            System.getenv("CHAT_ID_2");
 }

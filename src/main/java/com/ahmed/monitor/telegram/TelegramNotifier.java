@@ -23,27 +23,6 @@ public class TelegramNotifier {
         this.chatId = chatId;
         this.client = HttpClient.newHttpClient();
     }
-
-    public void sendMessage(String message) throws IOException, InterruptedException {
-
-        String url =
-                "https://api.telegram.org/bot" +
-                        botToken +
-                        "/sendMessage?chat_id=" +
-                        chatId +
-                        "&text=" +
-                        URLEncoder.encode(message, StandardCharsets.UTF_8);
-        System.out.println(url);
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(url))
-                .GET()
-                .build();
-
-        HttpResponse<String> response =
-                client.send(request, HttpResponse.BodyHandlers.ofString());
-
-        System.out.println(response.body());
-    }
     public void sendPhoto(String imagePath, String caption) throws IOException {
 
         File file = new File(imagePath);
@@ -66,6 +45,33 @@ public class TelegramNotifier {
 
         try (Response response = client2.newCall(request).execute()) {
             System.out.println(response.body().string());
+        }
+    }
+    public void sendVoice(String voicePath) throws IOException {
+
+        File file = new File(voicePath);
+
+        RequestBody requestBody = new MultipartBody.Builder()
+                .setType(MultipartBody.FORM)
+                .addFormDataPart("chat_id", chatId)
+                .addFormDataPart(
+                        "voice",
+                        file.getName(),
+                        RequestBody.create(file, MediaType.parse("audio/ogg"))
+                )
+                .build();
+
+        Request request = new Request.Builder()
+                .url("https://api.telegram.org/bot" + botToken + "/sendVoice")
+                .post(requestBody)
+                .build();
+
+        try (Response response = client2.newCall(request).execute()) {
+            if (!response.isSuccessful()) {
+                throw new IOException("Telegram Error: " + response.code());
+            }
+
+            System.out.println(response.body() != null ? response.body().string() : "");
         }
     }
 }
