@@ -40,7 +40,7 @@ public class Main {
 
             // Check if Aug 1 is available
             boolean available = checker.checkBooking(
-                    LocalDate.of(2026, 7, 29)
+                    LocalDate.of(2026, 8, 1)
             );
 
             if (available) {
@@ -50,7 +50,7 @@ public class Main {
                                 Config.BOT_TOKEN,
                                 Config.CHAT_ID);
                 checker.selectDateAndTakeScreenshot(
-                        LocalDate.of(2026, 7, 29),
+                        LocalDate.of(2026, 8, 1),
                         "screenshots/booking.png"
 
                 );
@@ -67,7 +67,7 @@ public class Main {
                         ⏳ Don't wait—tickets may sell out quickly!
                         
                         🤖 Sent automatically by Cinema Monitor.
-                        """.formatted(LocalDate.of(2026, 7, 29));
+                        """.formatted(LocalDate.of(2026, 8, 1));
                 try {
 
                     notifier.sendPhoto("screenshots/booking.png", message);
